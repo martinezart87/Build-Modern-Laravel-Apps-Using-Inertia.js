@@ -14,11 +14,22 @@
   </Layout>
 </template>
 
-<script>
+<!-- <script>
 import Layout from "../Shared/Layout";
-import { Link } from "@inertiajs/inertia-vue3";
+
+// przeniesiono jako komponent globalny
+// import { Link } from "@inertiajs/inertia-vue3";
 export default {
-  components: { Layout, Link },
+  components: { Layout },
   props: { time: String }
 };
+</script> -->
+
+<script setup>
+import Layout from "../Shared/Layout";
+import { Link } from "@inertiajs/inertia-vue3";
+
+defineProps({
+  time: String
+});
 </script>

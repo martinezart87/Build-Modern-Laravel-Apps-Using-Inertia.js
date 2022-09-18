@@ -1,5 +1,5 @@
 import { createApp, h } from 'vue'
-import { createInertiaApp } from '@inertiajs/inertia-vue3'
+import { createInertiaApp, Link } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress';
 
 
@@ -8,6 +8,8 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
+      // Rejestracja komponentu globalnego - nie trzeba importowoać wówczas do plików vue 
+      // .component("Link", Link)
       .mount(el)
   },
 });

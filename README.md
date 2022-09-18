@@ -123,3 +123,17 @@ Things You'll Learn
 - Share Data
 
 Define user into HandleInertiaRequests Middleware
+### Episode 11 Global Component Registration
+Before we move on to persistent layouts in the next episode, first I'd like to quickly discuss global component registration. For example, it's slightly combersome to import Inertia's Link component every time you want to render what is effectively an anchor tag. If you wish, we can solve this by registering it as a global component.
+
+Things You'll Learn
+- Register Vue Components Globally
+- Script Setup
+
+    <script setup> - delete export default {} or registry global component into app.js
+### Episode 12 Persistent Layouts
+Currently, layout state is reset each time we click from page to page. This is because every page component includes the Layout as part of its template. As such, when you visit a new page, that component, including the layout, is destroyed. If you instead want state from your layouts to persist across pages - such as for a podcast that continues playing as your browse the site - we'll need to review persistent layouts.
+
+Things You'll Learn
+- Persistent Layouts
+- State
