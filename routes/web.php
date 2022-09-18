@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -19,10 +20,28 @@ Route::get('/', function () {
 });
 
 Route::get('/users', function () {
-    sleep(2);
-    return Inertia::render('Users',[
-        'time' => now()->toTimeString()
+    // First definiton
+    // sleep(2);
+    // return Inertia::render('Users',[
+    //     'time' => now()->toTimeString()
+    // ]);
+
+
+    // Episode 16
+    // return Inertia::render('Users', [
+    //     // User:all() = przesyła cały obiekt userów do klietna. w dodatku Vue -> Laytot -> tablica users
+    //     'users' => User::all()->map(fn($user) => [
+    //         'name' => $user->name
+    //     ])
+    // ]);
+
+    return Inertia::render('Users', [
+        'users' => User::paginate(10)->through(fn($user) => [
+            'id' => $user->id,
+            'name' => $user->name
+        ])
     ]);
+	
 });
 
 Route::get('/settings', function () {

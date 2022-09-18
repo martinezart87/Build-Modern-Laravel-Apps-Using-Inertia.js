@@ -193,3 +193,12 @@ Things You'll Learn
 
 Inertia Head component: import { Head } from '@inertiajs/inertia-vue3';
 head-key="description" - only one element about this key on site
+### Episode 16 An Important SPA Security Concern
+In this episode, as we begin our review of how Eloquent data can be fetched and sent to the client-side, we'll need to take some time to discuss an incredibly important concern when building any SPA: data that is returned from an AJAX request is of course entirely visible to the end-user. With this in mind, you must pay special attention to ensure that you aren't accidentally exposing private information.
+
+Things You'll Learn
+- Eloquent Data Fetching
+- Collection Mapping
+- SPA Security
+
+Add database.sqlite
