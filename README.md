@@ -109,3 +109,17 @@ Things You'll Learn
 
 1. :class="{'font-bold underline': $page.url === '/'}" $page.url == debug->vue->Inertia->props->url.
 2. $page.url.startsWith === '/users' or $page.component === 'Users'
+### 9 Layout Files
+We can finally move on to layout files. At the moment, every page must manually import and render the navigation section. But, clearly, this isn't ideal. Instead, let's extract a Layout file that can be responsible for all portions of the UI that should remain consistent as we browse from page to page.
+
+Things You'll Learn
+- Extract Layouts
+- Basic Section Padding
+### Section 10 Shared Data
+Now that we've successfully extracted a Layout component, the next thing we need to sort out is how to share data across components. Luckily, Inertia provides a nice and friendly solution that we'll review in this episode.
+
+Things You'll Learn
+- HandleInertiaRequests Middleware
+- Share Data
+
+Define user into HandleInertiaRequests Middleware

@@ -10,9 +10,9 @@
     @inertiaHead
   </head>
   <body>
-    <section class="p-8">
+    {{-- <section class="p-8"> --}}
         @inertia
-    </section>
+    {{-- </section> --}}
     {{-- @intertia zastępuje <div id="app" data-page="json_encode($data)" --}}
   </body>
 </html>
