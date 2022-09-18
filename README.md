@@ -215,3 +215,10 @@ Things You'll Learn
 - Filtering
 - State Preservation
 - Eloquent Search
+## Section 2 Forms
+### Episode 19 Inertia Forms 101
+Processing forms With Vue, Inertia, and Laravel is a joy. It instantly feels familiar, while offering wild amounts of power and flexibility. Let's by asynchronously submitting a simple form for creating a user.
+
+Things You'll Learn
+- Inertia Post Requests
+- Laravel Validation
