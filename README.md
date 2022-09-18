@@ -183,3 +183,10 @@ Update app.js
 Run npx mix
 
 Loading site js file (debug)
+
+### Episode 15
+Next up, let's figure out how to make the head portion of our HTML dynamic. Luckily, Inertia makes this a cinch by offering a Head component that we can pull in.
+
+Things You'll Learn
+- Inertia's Head Component
+- Set Head Defaults
