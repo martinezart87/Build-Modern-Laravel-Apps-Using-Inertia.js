@@ -137,3 +137,22 @@ Currently, layout state is reset each time we click from page to page. This is b
 Things You'll Learn
 - Persistent Layouts
 - State
+
+Rebulid Layout - podscast without reset
+### Episode 13 Default Layouts
+Now that we have persistent layouts working, if you wish, we can next remove the need to manually import and set the Layout for every single page component.
+
+Things You'll Learn
+- Default Layouts
+- CommonJS Imports
+
+Default page layout (into app.js) and remove scripts into pages: 
+    import Layout from "./Shared/Layout";
+
+    resolve: name => {
+        let page = require(`./Pages/${name}`).default;
+
+        page.layout ??= Layout;
+
+        return page;
+    },
