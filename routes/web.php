@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,13 +36,31 @@ Route::get('/users', function () {
     //     ])
     // ]);
 
+    // Episode 17 - paginate through = map, ale przy paginate stosuje się through
+    // return Inertia::render('Users', [
+    //     'users' => User::paginate(10)->through(fn($user) => [
+    //         'id' => $user->id,
+    //         'name' => $user->name
+    //     ])
+    // ]);
+
+    // Episode 18 
     return Inertia::render('Users', [
-        'users' => User::paginate(10)->through(fn($user) => [
-            'id' => $user->id,
-            'name' => $user->name
-        ])
+        'users' => User::query()
+            ->when(Request::input('search'), function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->paginate(10)
+            // dodaje query string do linku
+            ->withQueryString()
+            ->through(fn($user) => [
+                'id' => $user->id,
+                'name' => $user->name
+            ]),
+        
+        // dodanie propsa
+        'filters' => Request::only(['search'])
     ]);
-	
 });
 
 Route::get('/settings', function () {

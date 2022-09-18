@@ -1,11 +1,10 @@
 <template>
+
   <Head title="Users" />
 
-  <div class="flex justify-between mb-6">
-    <h1 class="text-3xl">Users</h1>
-
-    <input v-model="search" type="text" placeholder="Search..." class="border px-2 rounded-lg" />
-  </div>
+  <h1 class="text-3xl mb-6">
+    Users
+  </h1>
 
   <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -25,7 +24,9 @@
                 </td>
 
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <Link :href="`/users/${user.id}/edit`" class="text-indigo-600 hover:text-indigo-900"> Edit </Link>
+                  <Link :href="`/users/${user.id}/edit`" class="text-indigo-600 hover:text-indigo-900">
+                  Edit
+                  </Link>
                 </td>
               </tr>
             </tbody>
@@ -34,26 +35,11 @@
       </div>
     </div>
   </div>
+
   <Pagination :links="users.links" class="mt-6" />
 </template>
 
 <script setup>
-import Pagination from '../Shared/Pagination';
-import { ref, watch } from "vue";
-import {Inertia} from "@inertiajs/inertia";
-let props = defineProps({
-  users: Object,
-  filters: Object
-});
-let search = ref(props.filters.search);
-
-watch(search, value => {
-  Inertia.get('/users', { search: value }, {
-    // bez tej opcji tekst w inpucie jest resetowany po wykonaniu akcji change
-    preserveState: true,
-
-    // dodanie przy cofaniu strony, żeby kasował inputa
-    replace: true
-  });
-});
+import Pagination from "../Shared/Pagination";
+defineProps({ users: Object });
 </script>

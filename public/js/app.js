@@ -601,6 +601,14 @@ var map = {
 		"./resources/js/Pages/episode16_Users.vue",
 		"resources_js_Pages_episode16_Users_vue"
 	],
+	"./episode17_Users": [
+		"./resources/js/Pages/episode17_Users.vue",
+		"resources_js_Pages_episode17_Users_vue"
+	],
+	"./episode17_Users.vue": [
+		"./resources/js/Pages/episode17_Users.vue",
+		"resources_js_Pages_episode17_Users_vue"
+	],
 	"./old_Users": [
 		"./resources/js/Pages/old_Users.vue",
 		"resources_js_Pages_old_Users_vue"

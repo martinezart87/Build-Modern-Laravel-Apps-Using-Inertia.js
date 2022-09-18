@@ -156,7 +156,6 @@ Default page layout (into app.js) and remove scripts into pages:
 
         return page;
     },
-
 ### Episode 14 Code Splitting and Dynamic Imports
 Before we move on to something else, let's quickly touch upon dynamic imports and how that can potentially affect your bundle. If the app you're building warrants it, we can asynchronously download the JavaScript for each page in real-time, as the user browses your site.
 
@@ -183,7 +182,6 @@ Update app.js
 Run npx mix
 
 Loading site js file (debug)
-
 ### Episode 15
 Next up, let's figure out how to make the head portion of our HTML dynamic. Luckily, Inertia makes this a cinch by offering a Head component that we can pull in.
 
@@ -202,7 +200,6 @@ Things You'll Learn
 - SPA Security
 
 Add database.sqlite
-
 ### Episode 17 Pagination
 You'll be happy to hear that Laravel makes a pagination laughably simple to implement. In this episode, we'll add a list of pagination links to the bottom of our users table.
 
@@ -210,3 +207,11 @@ Things You'll Learn
 - Laravel Pagination
 - The through() Method
 - Dynamic Vue Components
+
+### Episode 17 Pagination
+Now that we have pagination working properly, let's next implement real-time search filtering. When we type into a search box, the table of users should automatically refresh to show only the users that match the given search query. Let's get to work!
+
+Things You'll Learn
+- Filtering
+- State Preservation
+- Eloquent Search
