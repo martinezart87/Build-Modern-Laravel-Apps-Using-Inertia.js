@@ -202,3 +202,11 @@ Things You'll Learn
 - SPA Security
 
 Add database.sqlite
+
+### Episode 17 Pagination
+You'll be happy to hear that Laravel makes a pagination laughably simple to implement. In this episode, we'll add a list of pagination links to the bottom of our users table.
+
+Things You'll Learn
+- Laravel Pagination
+- The through() Method
+- Dynamic Vue Components
