@@ -190,3 +190,6 @@ Next up, let's figure out how to make the head portion of our HTML dynamic. Luck
 Things You'll Learn
 - Inertia's Head Component
 - Set Head Defaults
+
+Inertia Head component: import { Head } from '@inertiajs/inertia-vue3';
+head-key="description" - only one element about this key on site
