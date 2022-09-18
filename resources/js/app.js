@@ -7,8 +7,10 @@ import Layout from "./Shared/Layout";
 createInertiaApp({
   // resolve: name => require(`./Pages/${name}`),
   // Default page layout
-  resolve: name => {
-    let page = require(`./Pages/${name}`).default;
+  resolve: async name => {
+    // let page = require(`./Pages/${name}`).default;
+
+    let page = (await import(`./Pages/${name}`)).default;
 
     // ??= == OR
     page.layout ??= Layout;

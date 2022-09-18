@@ -156,3 +156,30 @@ Default page layout (into app.js) and remove scripts into pages:
 
         return page;
     },
+
+### Episode 14 Code Splitting and Dynamic Imports
+Before we move on to something else, let's quickly touch upon dynamic imports and how that can potentially affect your bundle. If the app you're building warrants it, we can asynchronously download the JavaScript for each page in real-time, as the user browses your site.
+
+Things You'll Learn
+- Async Functions
+- Dynamic Imports
+- Mix Extraction
+
+Add .extract() into webpack.mix.js - dynamic create js file to antoher sites.
+!!If not extract() function then load one js file!!
+npx mix adding manifest.js file and vendor.js file. Must addingo to app.blade.php
+
+Update app.js
+    resolve: async name => {
+    
+    let page = (await import(`./Pages/${name}`)).default;
+
+    // ??= == OR
+    page.layout ??= Layout;
+
+    return page;
+  },
+
+Run npx mix
+
+Loading site js file (debug)
