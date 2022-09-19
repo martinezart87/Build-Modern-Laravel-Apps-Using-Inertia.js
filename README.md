@@ -278,3 +278,4 @@ Changes:
 - modify resources/js/app.js
 - modify routes/web.php
 - modify resources/js/app.js 
+- \App\Http\Middleware\HandleInertiaRequests::class, move to web group middleware in kernel.php
