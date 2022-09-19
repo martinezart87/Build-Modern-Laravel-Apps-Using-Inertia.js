@@ -222,3 +222,59 @@ Processing forms With Vue, Inertia, and Laravel is a joy. It instantly feels fam
 Things You'll Learn
 - Inertia Post Requests
 - Laravel Validation
+
+Changes:
+- Add resources/js/Pages/Users/Create.vue
+- resources/js/Pages/Users.vue → resources/js/Pages/Users/Index.vue
+- modify web.php
+### Episode 20 Display Failed Validation Messages
+In the previous episode, we got the "happy path" of our form to work properly. But what about situations where the validation checks failed? Let's conditionally render a red validation message below each input that failed the validator.
+
+Things You'll Learn
+- Inertia Errors
+- Display Validation Messages
+
+Changes:
+- modify resources/js/Pages/Users/Create.vue
+- modify resources/js/Pages/Users/Index.vue
+### Episode 21
+Anyone who has ever shipped a form to production knows that users will do all sorts of weird things that you didn't expect. To demonstrate this, we'll solve the "spam click the submit button" problem by conditionally disabling the button after the first click. Then, we'll switch over to using Inertia's form helper, which makes tasks like this laughably simple.
+
+Things You'll Learn
+- Inertia's Form Helper
+
+Changes:
+- modify resources/js/Pages/Users/Create.vue. Add Inertia's Form Helper. Password return server-side error (not required attribute)
+## Section 3 Throttling
+### Episode 22 Better Performance With Throttle and Debounce
+Whenever you make a network request as a response to the user typing into an input, it's essential that you implement some form of request throttling. There's no need to make dozens of instant requests to your server if you don't have to. In this episode, we'll solve this by reviewing Lodash's debounce and throttle functions and discussing the differences between the two.
+
+Things You'll Learn
+- Throttle
+- Debounce
+- Network Requests
+
+Command:
+- npm install loadash --save-dev
+- In file: import debounce from "lodash/debounce";
+
+Fix search request after all words debounce function - trigger after finish write into input
+    watch(search, debounce(function (value) {
+        Inertia.get('/users', { search: value }, { preserveState: true, replace: true });
+    }, 300));
+## Section 4 Authentication and Authorization
+### Episode 23 Authentication With Inertia
+Authentication with Inertia is, really, no different than performing authentication in a traditional server-side Laravel app. No tokens. No OAuth. None of that. Instead, submit the form with Inertia in the way you've already learned, and then let Laravel handle the rest. This will all feel incredibly familiar to you.
+
+Things You'll Learn
+- Basic Authentication
+- Intended Redirects
+
+Changes:
+- add app/Http/Controllers/Auth/LoginController.php
+- modify app/Http/Middleware/HandleInertiaRequests.php
+- add resources/js/Pages/Auth/Login.vue
+- modify resources/js/Shared/Nav.vue
+- modify resources/js/app.js
+- modify routes/web.php
+- modify resources/js/app.js 
