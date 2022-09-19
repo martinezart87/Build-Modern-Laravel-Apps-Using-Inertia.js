@@ -279,3 +279,14 @@ Changes:
 - modify routes/web.php
 - modify resources/js/app.js 
 - \App\Http\Middleware\HandleInertiaRequests::class, move to web group middleware in kernel.php
+
+### Episode 24 Authorization Tips 
+Let's wrap up this series by discussing how you might go about handling authorization. We certainly don't want to duplicate this sort of logic for both the server-side and client-side. Instead, we can pass any relevant authorization logic from the controller, as a component prop.
+
+Things You'll Learn
+- Laravel Policies
+- Per-Record Authorization
+- Can Middleware
+
+Changes:
+- add UserPolicy
