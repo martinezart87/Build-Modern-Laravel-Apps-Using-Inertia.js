@@ -53,6 +53,9 @@ Route::middleware('auth')->group(function () {
         return redirect('/users');
     });
 
+    Route::get('/users/{id}/edit', [LoginController::class, 'edit'])->can('edit', 'App\Models\User');
+    Route::put('/users/update', [LoginController::class, 'update'])->can('edit', 'App\Models\User');
+
     Route::get('/settings', function () {
         return Inertia::render('Settings');
     });

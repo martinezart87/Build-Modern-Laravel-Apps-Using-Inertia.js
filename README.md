@@ -290,3 +290,6 @@ Things You'll Learn
 
 Changes:
 - add UserPolicy
+
+## Homework
+Add Edit profile functionality
