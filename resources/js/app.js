@@ -4,28 +4,40 @@ import { InertiaProgress } from "@inertiajs/progress";
 import Layout from "./Shared/Layout";
 
 createInertiaApp({
-  resolve: name => {
-    let page = require(`./Pages/${name}`).default;
+    // kompilacja w 4 plikach
+    //   resolve: name => {
+    //     let page = require(`./Pages/${name}`).default;
 
-    if (page.layout === undefined) {
-      page.layout = Layout;
-    }
+    //     if (page.layout === undefined) {
+    //       page.layout = Layout;
+    //     }
 
-    return page;
-  },
+    //     return page;
+    //   },
 
-  setup({ el, App, props, plugin }) {
-    createApp({ render: () => h(App, props) })
-      .use(plugin)
-      .component("Link", Link)
-      .component("Head", Head)
-      .mount(el);
-  },
+    // kompilacja dla kazdego pliku zidoku z osobna użyteczne dla dużych projektów
+    resolve: async name => {
+        let page = (await import(`./Pages/${name}`)).default;
 
-  title: title => `My App - ${title}`
+        if (page.layout === undefined) {
+            page.layout = Layout;
+        }
+
+        return page;
+    },
+
+    setup({ el, App, props, plugin }) {
+        createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .component("Link", Link)
+            .component("Head", Head)
+            .mount(el);
+    },
+
+    title: title => `My App - ${title}`
 });
 
 InertiaProgress.init({
-  color: "red",
-  showSpinner: true,
+    color: "red",
+    showSpinner: true,
 });

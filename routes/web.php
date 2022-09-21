@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,6 +16,19 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/users', function () {
+        // return UserResource::collection(User::all());
+        // return User::all();
+
+        // Z użyciem api resource
+        return Inertia::render('Users/Index', [
+            'users' => UserResource::collection(User::query()->paginate(20)->withQueryString()),
+            'filters' => Request::only(['search']),
+            'can' => [
+                'createUser' => Auth::user()->can('create', User::class)
+            ]
+        ]);
+
+
         return Inertia::render('Users/Index', [
             'users' => User::query()
                 ->when(Request::input('search'), function ($query, $search) {
@@ -56,7 +70,28 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{id}/edit', [LoginController::class, 'edit'])->can('edit', 'App\Models\User');
     Route::put('/users/update', [LoginController::class, 'update'])->can('edit', 'App\Models\User');
 
+    Route::get('/users/{id}/show', function() {
+        // nalezy dodać tablicę data do zmiennych we vue lub AppServcieProvider dodać JsonResource::withoutWrapping();
+        return Inertia::render('Users/Edit');
+    });
+
     Route::get('/settings', function () {
         return Inertia::render('Settings');
     });
 });
+
+// Route::get('/users/create', function () {
+//     return Inertia::render('Users/Create');
+// });
+
+// Route::post('/users', function () {
+//     $attributes = Request::validate([
+//         'name' => 'required',
+//         'email' => ['required', 'email'],
+//         'password' => 'required',
+//     ]);
+
+//     User::create($attributes);
+
+//     return redirect('/users');
+// });

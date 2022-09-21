@@ -44,10 +44,18 @@
 </template>
 
 <script setup>
-import Pagination from '../../Shared/Pagination';
-import { ref, watch } from 'vue';
+// import Pagination from '../../Shared/Pagination';
+// import Pagination from '@/Shared/Pagination';
+// import { ref, watch } from 'vue';
+import { ref, watch, defineAsyncComponent, onMounted } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import debounce from "lodash/debounce";
+import User from "@/Models/User";
+
+let Pagination = defineAsyncComponent(() => {
+    return import('@/Shared/Pagination');
+});
+
 let props = defineProps({
   users: Object,
   filters: Object,
@@ -57,4 +65,14 @@ let search = ref(props.filters.search);
 watch(search, debounce(function (value) {
   Inertia.get('/users', { search: value }, { preserveState: true, replace: true });
 }, 300));
+
+onMounted(() => {
+    let user = new User(Inertia.page.props.auth.user);
+
+    if(user.id === otherUser.id){
+
+    }
+    // console.log(user.follows({}));
+});
+
 </script>
