@@ -50,7 +50,7 @@
 import { ref, watch, defineAsyncComponent, onMounted } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import debounce from "lodash/debounce";
-import User from "@/Models/User";
+import { useCurrentUser } from '@/Composables/useCurrentUser';
 
 let Pagination = defineAsyncComponent(() => {
     return import('@/Shared/Pagination');
@@ -66,13 +66,6 @@ watch(search, debounce(function (value) {
   Inertia.get('/users', { search: value }, { preserveState: true, replace: true });
 }, 300));
 
-onMounted(() => {
-    let user = new User(Inertia.page.props.auth.user);
-
-    if(user.id === otherUser.id){
-
-    }
-    // console.log(user.follows({}));
-});
+let currentUser = useCurrentUser();
 
 </script>

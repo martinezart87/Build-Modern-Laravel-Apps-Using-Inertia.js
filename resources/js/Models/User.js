@@ -9,4 +9,16 @@ export default class User {
         return this.follows.includes(user.id);
     }
 
+    is(user) {
+        return this.id === user.id;
+    }
+
+    hasPrivateProfile() {
+
+    }
+
+    isAlifer() {
+        return false;
+    }
+
 }

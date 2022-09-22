@@ -19,6 +19,7 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            // 'follows' => $this->follows()->pluck('id'),
             'foo' => $this->when(false, 'bar'),
             $this->mergeWhen(Auth::user()->is($this->resource), [
                 'email' => $this->email
